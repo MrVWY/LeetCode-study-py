@@ -41,10 +41,28 @@ class Solution:
                 backtrace(index + 1, path, residue - candidates[index])
                 path.pop()
 
-        #sorted(candidates)
+        # sorted(candidates)
         candidates.sort()
         size = len(candidates)
         res = []
         path = []
         backtrace(0, path, target)
+        return res
+
+
+# 216. 组合总和 III
+class Solution:
+    def combinationSum3(self, k: int, n: int) -> [[int]]:
+        def backtrace(k, residue, path, start):
+            if residue == 0 and k == 0:
+                res.append(path[:])
+                return
+            for index in range(start, 10):
+                path.append(index)
+                backtrace(k-1, residue-index, path, index+1)
+                path.pop()
+
+        res = []
+        path = []
+        backtrace(k, n, path, 1)
         return res
